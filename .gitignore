@@ -1,0 +1,24 @@
+# Python virtual environment
+venv/
+env/
+.venv/
+
+# Environment Variables
+.env
+.env.local
+
+# Vector Store Cache
+.chroma/
+chroma_db/
+cat_cache/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# System / OS
+.DS_Store
+Thumbs.db
