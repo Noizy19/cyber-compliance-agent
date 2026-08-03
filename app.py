@@ -160,31 +160,47 @@ with col_m4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Initialize session state for query if not present
-if "user_query" not in st.session_state:
-    st.session_state.user_query = ""
+# 1. Initialize the widget state key if it doesn't exist yet
+if "user_query_input" not in st.session_state:
+    st.session_state["user_query_input"] = ""
 
-# Sample Query Presets
+# 2. Callback function to update the text area when a sample button is clicked
+def set_query(query_text):
+    st.session_state["user_query_input"] = query_text
+
 st.markdown("##### 💡 Sample Compliance Queries:")
+
+# 3. Pass the callback function to on_click
 col1, col2, col3, col4 = st.columns(4)
 
-if col1.button("🔒 MFA & Password Rules", use_container_width=True):
-    st.session_state.user_query = "What are the mandatory MFA and password complexity rules?"
-    st.rerun()
-if col2.button("🚨 Incident Response SLAs", use_container_width=True):
-    st.session_state.user_query = "What are the incident response SLAs for security breaches?"
-    st.rerun()
-if col3.button("☁️ Cloud & Zero Trust", use_container_width=True):
-    st.session_state.user_query = "What controls are required for Zero Trust cloud access?"
-    st.rerun()
-if col4.button("📊 Data Retention & DLP", use_container_width=True):
-    st.session_state.user_query = "What are the data retention and DLP requirements?"
-    st.rerun()
+col1.button(
+    "🔒 MFA & Password Rules", 
+    on_click=set_query, 
+    args=("What are the mandatory MFA and password complexity rules?",),
+    use_container_width=True
+)
+col2.button(
+    "🚨 Incident Response SLAs", 
+    on_click=set_query, 
+    args=("What are the incident response SLAs for security breaches?",),
+    use_container_width=True
+)
+col3.button(
+    "☁️ Cloud & Zero Trust", 
+    on_click=set_query, 
+    args=("What controls are required for Zero Trust cloud access?",),
+    use_container_width=True
+)
+col4.button(
+    "📊 Data Retention & DLP", 
+    on_click=set_query, 
+    args=("What are the data retention and DLP requirements?",),
+    use_container_width=True
+)
 
-# Text Input field bound to session state
+# 4. Bind st.text_area key directly to "user_query_input"
 user_input = st.text_area(
     "Enter Cybersecurity Compliance Query:",
-    value=st.session_state.user_query,
     key="user_query_input",
     height=100,
     placeholder="e.g., What are the mandatory encryption standards for data at rest and data in transit?"
@@ -192,9 +208,9 @@ user_input = st.text_area(
 
 run_button = st.button("🚀 Analyze Compliance & Execute Pipeline", type="primary", use_container_width=True)
 
-# Execution Pipeline
+# 5. Execution Pipeline
 if run_button:
-    final_query = user_input.strip() or st.session_state.user_query.strip()
+    final_query = user_input.strip()
     if not final_query:
         st.warning("Please enter a compliance query or select a preset option above.")
     else:
