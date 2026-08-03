@@ -17,7 +17,8 @@ from typing import Dict, List, Any
 from dotenv import load_dotenv
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.schema import Document
+from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_core.documents import Document
 
 # Safe embedding import
 try:
