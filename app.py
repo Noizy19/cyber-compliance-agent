@@ -160,24 +160,28 @@ with col_m4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+# Initialize session state for query if not present
+if "user_query" not in st.session_state:
+    st.session_state.user_query = ""
+
 # Sample Query Presets
 st.markdown("##### 💡 Sample Compliance Queries:")
-sample_col1, sample_col2, sample_col3, sample_col4 = st.columns(4)
+col1, col2, col3, col4 = st.columns(4)
 
-preset_query = ""
-if sample_col1.button("🔐 MFA & Password Rules", use_container_width=True):
-    preset_query = "What are our mandatory MFA requirements and password rotation schedules for admin accounts?"
-if sample_col2.button("🚨 Incident Response SLAs", use_container_width=True):
-    preset_query = "What is our incident response SLA timeline for a Severity 1 active data breach under GDPR?"
-if sample_col3.button("☁️ Cloud & Zero Trust", use_container_width=True):
-    preset_query = "What are our Zero Trust network policies and cloud IAM access rules?"
-if sample_col4.button("📊 Data Retention & DLP", use_container_width=True):
-    preset_query = "What are the data retention periods for customer PII and how is DLP enforced?"
+if col1.button("🔒 MFA & Password Rules", use_container_width=True):
+    st.session_state.user_query = "What are the password complexity and MFA requirements under ISO 27001?"
+if col2.button("🚨 Incident Response SLAs", use_container_width=True):
+    st.session_state.user_query = "What is the mandatory timeline for reporting a severe data breach?"
+if col3.button("☁️ Cloud & Zero Trust", use_container_width=True):
+    st.session_state.user_query = "What are the required controls for Zero Trust cloud access?"
+if col4.button("📊 Data Retention & DLP", use_container_width=True):
+    st.session_state.user_query = "How long must security audit logs be retained according to NIST framework?"
 
-# Query Input Form
-user_query = st.text_area(
+# Text Input field bound to session state
+user_input = st.text_area(
     "Enter Cybersecurity Compliance Query:",
-    value=preset_query if preset_query else "",
+    value=st.session_state.user_query,
+    key="user_query_input",
     height=100,
     placeholder="e.g., What are the mandatory encryption standards for data at rest and data in transit?"
 )
@@ -185,9 +189,9 @@ user_query = st.text_area(
 run_button = st.button("🚀 Analyze Compliance & Execute Pipeline", type="primary", use_container_width=True)
 
 # Execution Pipeline
-if run_button or (preset_query and not user_query):
-    query_to_run = user_query if user_query else preset_query
-    if not query_to_run.strip():
+if run_button:
+    final_query = user_input.strip() or st.session_state.user_query.strip()
+    if not final_query:
         st.warning("Please enter a compliance query or select a preset option above.")
     else:
         st.divider()
@@ -198,7 +202,7 @@ if run_button or (preset_query and not user_query):
             
             # Run the agent pipeline
             results = rag_engine.run_compliance_pipeline(
-                query=query_to_run,
+                query=final_query,
                 groq_api_key=groq_api_key,
                 openrouter_api_key=openrouter_api_key
             )
