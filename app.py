@@ -169,13 +169,17 @@ st.markdown("##### 💡 Sample Compliance Queries:")
 col1, col2, col3, col4 = st.columns(4)
 
 if col1.button("🔒 MFA & Password Rules", use_container_width=True):
-    st.session_state.user_query = "What are the password complexity and MFA requirements under ISO 27001?"
+    st.session_state.user_query = "What are the mandatory MFA and password complexity rules?"
+    st.rerun()
 if col2.button("🚨 Incident Response SLAs", use_container_width=True):
-    st.session_state.user_query = "What is the mandatory timeline for reporting a severe data breach?"
+    st.session_state.user_query = "What are the incident response SLAs for security breaches?"
+    st.rerun()
 if col3.button("☁️ Cloud & Zero Trust", use_container_width=True):
-    st.session_state.user_query = "What are the required controls for Zero Trust cloud access?"
+    st.session_state.user_query = "What controls are required for Zero Trust cloud access?"
+    st.rerun()
 if col4.button("📊 Data Retention & DLP", use_container_width=True):
-    st.session_state.user_query = "How long must security audit logs be retained according to NIST framework?"
+    st.session_state.user_query = "What are the data retention and DLP requirements?"
+    st.rerun()
 
 # Text Input field bound to session state
 user_input = st.text_area(
