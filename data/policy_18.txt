@@ -1,0 +1,16 @@
+POLICY ID: POL-018
+TITLE: Log Management, Centralized SIEM & Audit Trail Retention
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.12.4.1, PCI-DSS v4.0 Requirement 10, SOC 2 CC7.2, NIST SP 800-92
+
+1. MANDATORY LOGGING SOURCES
+All cloud infrastructure, databases, authentication systems, firewalls, and application services MUST stream operational security logs to a centralized Security Information and Event Management (SIEM) platform (Datadog / Splunk / AWS CloudTrail).
+1.1. Logged Events: Successful/failed logins, privilege escalations, firewall drops, database queries on Tier 4 data, administrative configuration edits, and API token generations.
+
+2. LOG PROTECTION & INTEGRITY
+2.1. Immutability: Log storage buckets must enforce cryptographic append-only settings. Local log tampering or modification by administrators must be blocked.
+2.2. Log Contents Privacy: Direct injection of sensitive customer PII, plain-text passwords, credit card numbers, or cryptographic tokens into log outputs is strictly prohibited. Automated log scrubbers must mask sensitive patterns.
+
+3. LOG RETENTION TIMELINES
+- Hot / Online Searchable Retention (SIEM Index): Minimum 90 days.
+- Cold Archive Storage (Encrypted S3 Glacier / Azure Archive): Minimum 365 days (7 years for PCI-DSS systems).

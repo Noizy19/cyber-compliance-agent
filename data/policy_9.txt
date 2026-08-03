@@ -1,0 +1,17 @@
+POLICY ID: POL-009
+TITLE: Third-Party & Vendor Risk Management Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.15.1, SOC 2 CC9.2, NIST CSF ID.SC-1
+
+1. VENDOR RISK ASSESSMENT & DUE DILIGENCE
+1.1. Before onboarding any third-party SaaS provider, vendor, or contractor processing company data, the Information Security team must complete a Vendor Security Assessment (VSA).
+1.2. High-Risk Vendors (handling PII, source code, financial data, or infrastructure) MUST provide:
+   - Current SOC 2 Type II Report (covering Security, Confidentiality, and Privacy).
+   - Valid ISO 27001 Certification.
+   - Executive summary of recent third-party penetration test (< 12 months old).
+
+2. CONTRACTUAL REQUIREMENTS & MONITORING
+2.1. All vendor contracts must include mandatory Security Addendums:
+   - Data Protection Agreement (DPA) incorporating EU Standard Contractual Clauses (SCCs).
+   - Immediate Breach Notification Clause: Vendor must notify enterprise within 24 hours of suspected security incident.
+2.2. Annual Vendor Re-evaluation: High-risk vendors undergo annual security reviews and automated threat intelligence scoring (e.g., SecurityScorecard / BitSight).

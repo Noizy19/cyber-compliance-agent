@@ -1,0 +1,22 @@
+POLICY ID: POL-002
+TITLE: Password Rotation, Complexity & Password Vault Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: NIST SP 800-63B Section 5.1.1, CIS Controls v8 5.2, SOC 2 CC6.1
+
+1. PURPOSE & SCOPE
+This policy outlines rules for user passwords, service account credentials, password rotation intervals, and secret management tools.
+
+2. PASSWORD COMPLEXITY & LENGTH
+2.1. Standard User Passwords must be at least 16 characters long.
+2.2. Service Accounts and Administrative Passwords must be at least 25 characters long.
+2.3. Passwords must contain a combination of uppercase letters, lowercase letters, numbers, and special symbols (!@#$%^&*).
+2.4. Common dictionary words, sequential character strings, and compromised breach list passwords (checked via HaveIBeenPwned API) are automatically rejected during password creation.
+
+3. PASSWORD ROTATION SCHEDULE
+3.1. Standard User Passwords: Mandatory rotation every 90 days. If robust MFA is enforced, rotation is mandatory every 180 days or immediately upon suspected compromise.
+3.2. Administrator & Privileged Accounts: Mandatory rotation every 60 days.
+3.3. API Keys & Database Service Account Credentials: Mandatory automated rotation every 30 days via HashiCorp Vault or AWS Secrets Manager.
+
+4. PASSWORD MANAGERS & REUSE
+- Users MUST use enterprise-approved password managers (1Password / Bitwarden Enterprise).
+- Storing passwords in plaintext, spreadsheets, code repositories, or browser auto-fill is strictly prohibited.

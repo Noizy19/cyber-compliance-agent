@@ -1,0 +1,14 @@
+POLICY ID: POL-013
+TITLE: Remote Work, VPN & Mobile Device Management (MDM) Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.6.2, NIST SP 800-46 Rev 2, SOC 2 CC6.1
+
+1. REMOTE CONNECTIVITY & VPN REQUIREMENTS
+1.1. Remote workers connecting to internal development servers, databases, or staging environments MUST connect via enterprise VPN (WireGuard / IPsec with TLS 1.3) or Zero Trust Access Gateway (Cloudflare One / Zscaler).
+1.2. Public Wi-Fi Warning: Accessing enterprise resources over unsecured public Wi-Fi networks (cafes, airports) without active enterprise VPN or ZTNA tunnel is strictly prohibited.
+
+2. MOBILE DEVICE MANAGEMENT (MDM) ENFORCEMENT
+2.1. BYOD & Corporate Mobile Devices accessing corporate email, Slack, or Google Workspace must enroll in enterprise MDM (Jamf / Microsoft Intune).
+2.2. Containerization: Corporate data must reside in an encrypted container separated from personal applications.
+2.3. Remote Wipe: Enterprise IT reserves the right to execute a remote container wipe upon device loss, theft, or employee termination.
+2.4. Jailbroken or rooted smartphones are permanently blocked from accessing corporate services.

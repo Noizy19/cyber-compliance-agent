@@ -1,0 +1,31 @@
+POLICY ID: POL-003
+TITLE: Incident Response Plan & SLA Timelines
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.16.1, NIST SP 800-61 Rev 2, GDPR Article 33
+
+1. INCIDENT SEVERITY CLASSIFICATION & RESPONSE SLAs
+The organization classifies cybersecurity incidents into four severity levels. Teams MUST adhere to the SLA timelines below:
+
+1.1. Severity 1 (Critical - Active Data Breach / Ransomware / Production Down):
+   - Acknowledgment SLA: < 15 minutes
+   - Triage & Containment SLA: < 1 hour
+   - Executive & Legal Notification SLA: < 2 hours
+   - Regulatory Breach Notification SLA: < 72 hours (GDPR / HIPAA compliance requirement)
+
+1.2. Severity 2 (High - Compromised Admin Account / Malware on Internal Workstation):
+   - Acknowledgment SLA: < 30 minutes
+   - Triage & Containment SLA: < 4 hours
+   - Resolution SLA: < 24 hours
+
+1.3. Severity 3 (Medium - Phishing Email Received / Suspicious Login Alert):
+   - Acknowledgment SLA: < 2 hours
+   - Investigation SLA: < 12 hours
+   - Resolution SLA: < 48 hours
+
+1.4. Severity 4 (Low - Non-critical policy violation / Minor vulnerability scan finding):
+   - Acknowledgment SLA: < 24 hours
+   - Resolution SLA: < 7 business days
+
+2. POST-INCIDENT REQUIREMENTS
+- Lessons Learned meeting must occur within 5 business days of incident closure for Sev 1 & Sev 2 incidents.
+- Incident Root Cause Analysis (RCA) report must be completed and submitted to CISO within 10 business days.

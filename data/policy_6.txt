@@ -1,0 +1,14 @@
+POLICY ID: POL-006
+TITLE: Endpoint Detection and Response (EDR) & Device Hardening Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: CIS Controls v8 1.1 & 10.1, SOC 2 CC6.8, NIST SP 800-128
+
+1. ENDPOINT AGENT ENFORCEMENT
+1.1. All enterprise workstations (laptops, desktops) and servers (cloud & on-premise) must run enterprise Endpoint Detection and Response (EDR) software (e.g., CrowdStrike Falcon / SentinelOne).
+1.2. EDR agents must be configured in full PREVENTATIVE / AUTOMATIC ISOLATION mode. Tamper protection must be enabled with a centralized password.
+1.3. Any endpoint missing active EDR telemetry for more than 48 hours is automatically quarantined from the corporate network.
+
+2. DISK ENCRYPTION & HARDENING REQUIREMENTS
+2.1. Full Disk Encryption (FDE): BitLocker (256-bit AES) on Windows, FileVault 2 on macOS, and LUKS on Linux are MANDATORY. Encryption keys must be escrowed in centralized identity management.
+2.2. OS Patching: Critical OS vulnerabilities must be auto-installed within 72 hours of vendor release.
+2.3. USB & Removable Storage: Mass storage USB drives are blocked by default via MDM policy. Exceptions require SecOps approval.

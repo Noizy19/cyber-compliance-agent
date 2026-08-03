@@ -1,0 +1,19 @@
+POLICY ID: POL-010
+TITLE: Vulnerability Management, Patching Schedules & Penetration Testing
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.12.6.1, SOC 2 CC7.1, PCI-DSS v4.0 Requirement 6 & 11
+
+1. VULNERABILITY SCANNING RECURRENCE
+1.1. Automated Infrastructure Scanning: Weekly automated vulnerability scans across all public and internal IP ranges using Tenable / Qualys.
+1.2. Container & Dependency Scanning: Daily automated scans of container images (Trivy / Snyk) integrated into CI/CD pipelines.
+
+2. VULNERABILITY REMEDIATION SLAs
+Vulnerabilities identified via scans or bug bounties must be patched according to CVSS v3 score severity:
+- Critical Risk (CVSS 9.0 - 10.0): Remediation SLA < 48 hours
+- High Risk (CVSS 7.0 - 8.9): Remediation SLA < 14 days
+- Medium Risk (CVSS 4.0 - 6.9): Remediation SLA < 30 days
+- Low Risk (CVSS 0.1 - 3.9): Remediation SLA < 90 days
+
+3. PENETRATION TESTING REQUIREMENT
+- Comprehensive third-party grey-box penetration testing must be conducted at least ONCE PER ANNUM by an accredited external security auditing firm.
+- Any Critical or High findings from pen tests must undergo mandatory remediation and re-testing within 14 days.

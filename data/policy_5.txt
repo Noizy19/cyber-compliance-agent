@@ -1,0 +1,17 @@
+POLICY ID: POL-005
+TITLE: Role-Based Access Control (RBAC) & Principle of Least Privilege
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.9.1.2, SOC 2 CC6.1 & CC6.2, NIST SP 800-53 AC-2 / AC-6
+
+1. PRINCIPLE OF LEAST PRIVILEGE
+1.1. All users and automated system processes must be granted ONLY the minimum necessary permissions required to fulfill their explicitly defined job duties.
+1.2. Default Access Level: All new system accounts default to ZERO ACCESS (Deny All) until explicit role assignment occurs.
+
+2. ROLE-BASED ACCESS CONTROL (RBAC) FRAMEWORK
+2.1. Access is structured around pre-defined enterprise roles (e.g., Support Tier 1, Developer, QA Engineer, DevOps Engineer, Finance Admin).
+2.2. Ad-hoc granting of direct permission entitlements to individual user accounts is strictly PROHIBITED; permissions must be tied to Okta / Active Directory security groups.
+2.3. Segregation of Duties (SoD): Developers must NOT possess write/administrator privileges in Production environments. Production deployments must be automated via CI/CD pipelines with dual approval.
+
+3. ACCESS REVIEWS & AUDITS
+- Quarterly Access Reviews (QAR): System owners and team managers must review and certify user permissions every 90 days.
+- Stale Access Removal: Accounts inactive for over 45 days are automatically disabled; accounts inactive for over 90 days are deleted.

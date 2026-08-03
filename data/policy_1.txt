@@ -1,0 +1,21 @@
+POLICY ID: POL-001
+TITLE: Multi-Factor Authentication (MFA) & User Authentication Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.9.4.2, NIST SP 800-63B, SOC 2 CC6.1
+
+1. PURPOSE & SCOPE
+This policy establishes mandatory Multi-Factor Authentication (MFA) requirements across all enterprise systems, cloud platforms, VPN gateways, web applications, and administrator interfaces. Applies to all employees, contractors, and third-party vendors accessing enterprise assets.
+
+2. MANDATORY MFA REQUIREMENTS
+2.1. All user accounts attempting remote access, cloud workspace login, email login, or infrastructure access MUST authenticate using at least two independent factors:
+   - Factor 1: Something you know (Strong Password/Passphrase)
+   - Factor 2: Something you have (FIDO2 Hardware Key, TOTP Authenticator App, or Push Notification)
+2.2. SMS-based OTP and Email OTP are strictly PROHIBITED as secondary factors for internal personnel due to SIM-swapping and interception vulnerabilities.
+2.3. Hardware tokens (e.g., YubiKey) are MANDATORY for all Privileged / Administrator Accounts (Domain Admins, AWS Root/IAM Admins, Database Administrators).
+
+3. ENFORCEMENT & TIMEFRAME
+- Re-authentication is required every 12 hours or upon IP/device change detection.
+- Adaptive / Risk-Based MFA must trigger step-up authentication when login attempts originate from unknown locations or unrecognized devices.
+
+4. EXEMPTIONS & EMERGENCY ACCESS (BREAK-GLASS)
+- Break-glass administrator accounts must have credentials stored in a dual-custody hardware safe with automated alert notifications sent to the SOC upon use.

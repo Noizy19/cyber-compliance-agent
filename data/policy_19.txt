@@ -1,0 +1,14 @@
+POLICY ID: POL-019
+TITLE: Container & Kubernetes Infrastructure Security Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: CIS Kubernetes Benchmark v1.8, NIST SP 800-190, SOC 2 CC6.8
+
+1. CONTAINER IMAGE HARDENING & REGISTRY
+1.1. Base Images: Minimal, distroless, or official hardened alpine base images must be used.
+1.2. Rootless Execution: Containerized applications MUST NOT run as root user (`UID 0`). Dockerfiles must explicitly specify non-privileged user accounts (`USER 10001`).
+1.3. Image Signing & Provenance: Production images must be signed using Sigstore Cosign and verified by Kubernetes admission controllers (Kyverno / OPA Gatekeeper) before deployment.
+
+2. KUBERNETES CLUSTER SECURITY
+2.1. Network Policies: Default-deny network policies must be applied across all Kubernetes namespaces to isolate pod-to-pod communication.
+2.2. Pod Security Standards (PSS): Production workloads must enforce `Restricted` security standard level. Host IPC, host network, and host PID sharing are prohibited.
+2.3. Secrets Management: Kubernetes secrets must be encrypted at rest in etcd using AWS KMS envelope encryption. Storing secrets in plain environment variables is discouraged; use Vault Agent Injector or CSI secret driver.

@@ -1,0 +1,16 @@
+POLICY ID: POL-011
+TITLE: Data Loss Prevention (DLP) & Data Classification Framework
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.8.2, SOC 2 CC6.1, GDPR Article 32
+
+1. DATA CLASSIFICATION TIER LEVELS
+All data stored, processed, or transmitted by enterprise systems must be tagged into one of four sensitivity tiers:
+1.1. Tier 4 (Restricted / Confidential): Passwords, API Keys, Private Encryption Keys, Credit Card Numbers (PCI), Social Security Numbers, Customer Health Data.
+1.2. Tier 3 (Confidential): Customer PII, Customer Financial Records, Proprietary Source Code, Strategic Business Plans.
+1.3. Tier 2 (Internal Use Only): Internal Slack messages, Architecture diagrams, Employee phone directories.
+1.4. Tier 1 (Public): Marketing materials, Published whitepapers, Public documentation.
+
+2. DATA LOSS PREVENTION (DLP) ENFORCEMENT
+2.1. DLP agents running on endpoints and email gateways automatically inspect outbound traffic for Tier 4 & Tier 3 data patterns (regex matching SSNs, CCNs, private keys).
+2.2. Uploading Tier 4 data to personal cloud storage (Google Drive, Dropbox, Mega) or personal messaging tools is strictly blocked and alerted to SecOps.
+2.3. Watermarking: Exported reports containing customer data must include dynamic user timestamp watermarks.

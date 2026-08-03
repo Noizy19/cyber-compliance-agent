@@ -1,0 +1,14 @@
+POLICY ID: POL-008
+TITLE: Encryption Standards for Data at Rest and Data in Transit
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.10.1, NIST SP 800-52 Rev 2, FIPS 140-3, SOC 2 CC6.6
+
+1. DATA IN TRANSIT (NETWORK ENCRYPTION)
+1.1. All external public traffic and internal network communications between services MUST be encrypted using TLS 1.3 (TLS 1.2 permitted only with strong cipher suites). TLS 1.0 and 1.1 are strictly DEPRECATED and disabled.
+1.2. Weak ciphers (RC4, 3DES, NULL, static RSA key exchange without Perfect Forward Secrecy) are prohibited.
+1.3. HTTP traffic must automatically redirect to HTTPS with HTTP Strict Transport Security (HSTS) headers enabled with minimum `max-age=31536000; includeSubDomains; preload`.
+
+2. DATA AT REST (STORAGE ENCRYPTION)
+2.1. All databases (RDBMS, NoSQL), object stores (S3 buckets, Azure Blob), block storage volumes (EBS), and backups must be encrypted using AES-256 or ChaCha20-Poly1305 algorithms.
+2.2. Cryptographic keys must be managed in a dedicated Key Management Service (KMS) or Hardware Security Module (HSM).
+2.3. Master KMS keys must undergo automatic 365-day rotation.

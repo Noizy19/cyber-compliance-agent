@@ -1,0 +1,20 @@
+POLICY ID: POL-014
+TITLE: Disaster Recovery (DR) & Business Continuity Planning (BCP) Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.17, SOC 2 CC7.5, NIST SP 800-34 Rev 1
+
+1. RECOVERY TIME & RECOVERY POINT OBJECTIVES (RTO / RPO)
+1.1. Tier 1 Critical Production Applications & Databases:
+   - Recovery Point Objective (RPO): < 15 minutes (Data loss strictly bounded to 15 min max)
+   - Recovery Time Objective (RTO): < 1 hour (Systems fully restored within 60 min)
+1.2. Tier 2 Non-Critical Internal Tools (Billing reporting, Internal wiki):
+   - RPO: < 24 hours
+   - RTO: < 12 hours
+
+2. BACKUP FREQUENCY & GEOGRAPHIC REPLICATION
+2.1. Production Databases undergo automated continuous write-ahead log shipping with snapshot backups created every 4 hours.
+2.2. Multi-Region Redundancy: All production backups must be automatically replicated to a secondary cloud region located at least 500 miles away from the primary data center.
+2.3. Immutability & Air-Gapping: Storage bucket policies must enforce WORM (Write Once Read Many) immutability to prevent ransomware encryption of backup files.
+
+3. DISASTER RECOVERY TESTING SCHEDULE
+- Annual DR Failover Drills: IT & SecOps must execute a simulated full regional failover drill at least TWICE PER ANNUM.

@@ -1,0 +1,14 @@
+POLICY ID: POL-020
+TITLE: Cloud Access Control & Infrastructure Security Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.9.4.1, CIS AWS Foundations Benchmark v2.0, SOC 2 CC6.1 & CC6.3
+
+1. CLOUD IDENTITY & ACCESS MANAGEMENT (IAM)
+1.1. Root Account Security: AWS/GCP Root Accounts must have MFA enabled, possess hardware security key tokens, and have zero active API access keys. Daily administrative operations using root account credentials are strictly forbidden.
+1.2. Just-In-Time (JIT) Elevation: Production cloud access requires temporal elevation via IAM Identity Center or HashiCorp Boundary with maximum 4-hour session limits.
+1.3. Service Account Credentials: Long-lived IAM access keys are prohibited. Applications must use IAM Roles for EC2/EKS (IRSA) or GCP Workload Identity Federation.
+
+2. INFRASTRUCTURE AS CODE (IaC) & DEPLOYMENT HARDENING
+2.1. All cloud infrastructure changes MUST be provisioned using Infrastructure as Code (Terraform / CloudFormation / Pulumi). Manual modifications in the AWS/GCP Console are disabled via SCP policies.
+2.2. Pre-Commit Security Scans: IaC code must pass automated static analysis security scans (Checkov / TFSec) in pull requests to prevent publicly open S3 buckets, permissive security groups, or unencrypted storage resources.
+2.3. Guardrails & CSPM: Cloud Security Posture Management (Wiz / Prisma Cloud) must scan cloud accounts continuously for drift and misconfigurations.

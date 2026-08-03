@@ -1,0 +1,16 @@
+POLICY ID: POL-004
+TITLE: Data Retention, Archival & Secure Destruction Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: GDPR Article 5(1)(e), HIPAA Security Rule 164.316, SOC 2 CC6.5, NIST 800-88
+
+1. DATA RETENTION PERIODS BY CLASSIFICATION
+1.1. Customer Personally Identifiable Information (PII): Retained for duration of active contract plus 3 years post-termination, unless deletion is requested under GDPR Right to be Forgotten.
+1.2. Financial & Transaction Records: Mandatory retention for 7 years for tax and audit compliance.
+1.3. System Security Logs & Audit Trails: Active online storage for 90 days; cold archive retention for 365 days minimum.
+1.4. Employee Personnel Files: Retained for 7 years post-employment termination.
+1.5. Source Code & Product Backups: Daily backups retained 30 days; weekly backups retained 90 days; annual archives retained 3 years.
+
+2. SECURE DISPOSAL & DESTRUCTION
+2.1. Digital Data: Storage media marked for decommissioning must be sanitized using DoD 5220.22-M cryptographic erasure or NIST 800-88 compliant multi-pass overwrite protocols.
+2.2. Physical Media & Drives: Failed hard drives containing sensitive data must undergo degaussing or physical shredding (particle size < 2mm) by a certified vendor.
+2.3. Certificate of Destruction: A signed Certificate of Destruction must be logged and archived for all shredded drive hardware.

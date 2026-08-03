@@ -1,0 +1,17 @@
+POLICY ID: POL-017
+TITLE: API Security, OAuth 2.0 & Token Governance Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: OWASP API Security Top 10 2023, ISO 27001 A.14.1.2, SOC 2 CC6.6
+
+1. API AUTHENTICATION & AUTHORIZATION
+1.1. All public and internal microservice APIs MUST enforce strong authentication (OAuth 2.0 with mTLS or JWT signed with RS256 / ES256 algorithms).
+1.2. Symmetric signature algorithms (e.g., HS256) and unverified "none" algorithm tokens are strictly prohibited.
+1.3. Object-Level Authorization (BOLA/IDOR Defense): API endpoints must validate user tenancy and resource ownership on EVERY request.
+
+2. TOKEN LIFECYCLE & EXPIRATION
+2.1. Access Tokens (JWT): Maximum lifespan of 15 minutes.
+2.2. Refresh Tokens: Maximum lifespan of 7 days; mandatory sliding window rotation upon each use.
+2.3. API Keys: External API keys issued to partners must expire within 180 days and undergo automated usage auditing.
+
+3. RATE LIMITING & THROTTLING
+- API Gateways (Kong / AWS API Gateway) must enforce strict rate limiting (e.g., 100 requests per minute per IP/API key) to protect against Denial of Service and brute-force scraping.

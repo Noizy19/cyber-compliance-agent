@@ -1,0 +1,14 @@
+POLICY ID: POL-012
+TITLE: Physical Security, Data Center Access & Clean Desk Policy
+EFFECTIVE DATE: 2025-01-01
+COMPLIANCE STANDARD: ISO 27001 A.11.1 & A.11.2, SOC 2 CC6.4, NIST SP 800-53 PE-2 / PE-3
+
+1. PHYSICAL FACILITY & DATA CENTER ACCESS CONTROL
+1.1. Keycard Badges: All personnel must wear visible identity badges while inside corporate facilities. Tailgating behind authorized staff through doors is strictly forbidden.
+1.2. Visitor Controls: Visitors must register at reception with government ID, sign NDA agreements, wear red visitor badges, and remain escorted by a full-time employee at all times.
+1.3. Server Room Access: Physical access to server closets and data halls requires biometric dual-factor entry and pre-approved authorization ticket. CCTV logs must be retained for 90 days.
+
+2. CLEAN DESK & CLEAN SCREEN POLICY
+2.1. Workstations must automatically lock after 5 minutes of inactivity.
+2.2. Unattended physical documents containing Tier 3 or Tier 4 confidential information must be locked inside secure filing cabinets when leaving desks.
+2.3. Whiteboards containing system credentials, network diagrams, or confidential architecture details must be erased immediately after meetings conclude.
